@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companies</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="top-bar">
+        <span id="current-time">Loading...</span>
+    </div>
+
+    <div class="main-content">
+        <!-- Main Application Header -->
+        <header>
+            <h1>COMPANIES</h1>
+        </header>
+
+        <!-- 1. Landing Page View (Grid of Cards) -->
+        <div id="landing-page">
+
+            <!-- Tech Solutions Link -->
+            <a href="tech_dashboard.html" class="company-link">
+                <div class="company-card">
+                    <img class="company_logo1" src="resources/logo.png" alt="" srcset="">
+                    <h3>ROCK BUILDERS LTD</h3>
+                    <p>High-Tech Development & Services Resources</p>
+                </div>
+            </a>
+
+            <!-- Creative Agency Link -->
+            <a href="creative_dashboard.html" class="company-link">
+                <div class="company-card">
+                    <img class="company_logo2" src="resources/mkzonelogo.png" alt="" srcset="">
+                    <h3>MK ZONE INVESTMENT LTD</h3>
+                    <p>Marketing, Design & Content Creation Resources</p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <footer>
+        Designed and developed by <a href="mailto:samueljosephmollel@outlook.com">Samjosmol</a>.
+        <br>
+        &copy; <span id="copyright-year"></span> All rights reserved.
+    </footer>
+
+    <script>
+        /**
+         * Updates the current time displayed in the top bar.
+         */
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            const dateString = now.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            const timeEl = document.getElementById('current-time');
+            if (timeEl) {
+                timeEl.textContent = `${dateString} | ${timeString}`;
+            }
+        }
+
+        /**
+         * Sets the current year for the copyright notice.
+         */
+        function setCopyrightYear() {
+            const yearEl = document.getElementById('copyright-year');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+        }
+
+        window.onload = function () {
+            // Set copyright year immediately
+            setCopyrightYear();
+
+            // Start the time update
+            updateTime();
+            setInterval(updateTime, 1000);
+        };
+    </script>
+</body>
+
+</html>

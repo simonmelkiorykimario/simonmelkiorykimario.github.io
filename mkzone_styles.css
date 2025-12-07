@@ -1,0 +1,278 @@
+    /* Define a custom, sleek font */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+    :root {
+        /* --- ROCK BUILDERS PALETTE --- */
+        --primary-dark: #283A4A; /* Deep Slate Blue (Header BG, Card Icon/Title) */
+        --accent-blue: #3AB0FF; /* Vibrant Blue (Accents, Buttons, Borders) */
+        --bg-color: #F0F4F8; /* Light Blue-Gray background */
+        
+        /* Status Colors */
+        --complete-bg: #10b981; /* Green */
+        --complete-text: white;
+        --pending-bg: #facc15; /* Yellow */
+        --pending-text: #1f2937; /* Dark Gray */
+        --in-progress-bg: #3AB0FF; /* Use Accent Blue for In Progress */
+        --in-progress-text: white;
+        
+        --card-bg: #ffffff;
+        --text-color: #1f2937; /* Dark Gray */
+
+        /* Sizing & Effects */
+        --shadow-light: 0 4px 12px -1px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 12px 20px -5px rgba(0, 0, 0, 0.15);
+        --border-radius: 12px;
+        --max-page-width: 1400px;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .container {
+        width: 100%;
+        max-width: var(--max-page-width);
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    
+    /* --- PROFESSIONAL HEADER STYLES --- */
+    .top-bar {
+        width: 100%;
+        background-color: #075B5E;
+        color: white;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+    }
+
+    .header-content {
+        max-width: var(--max-page-width);
+        margin: 0 auto;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-title-group h1 {
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        font-weight: 800;
+        color: white;
+        margin: 0;
+        letter-spacing: -0.5px;
+    }
+
+    .header-title-group h2 {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        font-weight: 500;
+        color: var(--accent-blue);
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    #back-button {
+        background-color: var(--accent-blue);
+        color: white;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    #back-button:hover {
+        background-color: #2c97e6; 
+    }
+
+    #back-button ion-icon {
+        margin-right: 5px;
+        font-size: 1rem;
+    }
+    
+    /* --- Resource Grid Styles --- */
+    .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+    }
+
+    .resource-card {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--card-bg);
+        border: 1px solid var(--primary-dark);
+        border-radius: var(--border-radius);
+        padding: 25px;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-light);
+        text-decoration: none;
+        color: var(--text-color);
+        height: auto; 
+    }
+
+    .resource-card:hover:not(.disabled) {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--accent-blue);
+        cursor: pointer; 
+    }
+    
+    .card-header, .status-container {
+        pointer-events: none; 
+    }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .card-title-group {
+        display: flex;
+        align-items: center;
+    }
+
+    .card-icon {
+        font-size: 1.8rem;
+        color: var(--primary-dark);
+        margin-right: 15px;
+    }
+
+    .resource-card h4 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--primary-dark);
+    }
+
+    .status-container {
+        margin-bottom: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    }
+
+    .status-badge {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 0.8rem;
+        padding: 4px 10px;
+        border-radius: 9999px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .status-badge.complete {
+        background-color: var(--complete-bg);
+        color: var(--complete-text);
+    }
+
+    .status-badge.pending {
+        background-color: var(--pending-bg);
+        color: var(--pending-text);
+    }
+    
+    .status-badge.in-progress {
+        background-color: var(--in-progress-bg);
+        color: var(--in-progress-text);
+    }
+
+    .status-description {
+        font-size: 0.95rem;
+        color: var(--text-color);
+        opacity: 0.8;
+        margin-top: 5px;
+    }
+
+    .resource-card.disabled {
+        cursor: default;
+        opacity: 0.6;
+        pointer-events: none; 
+        background-color: #fafafa;
+    }
+
+    .category-group {
+        margin-bottom: 40px;
+    }
+
+    .category-group h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--accent-blue);
+        margin-bottom: 20px;
+        padding-bottom: 5px;
+        border-bottom: 1px dashed var(--primary-dark);
+    }
+    
+    /* Helper Links */
+    .helper-links {
+        margin-top: 55px;
+        padding-top: 30px;
+        border-top: 1px solid var(--primary-dark);
+        text-align: center;
+    }
+    
+    .helper-links h3 {
+            color: var(--primary-dark);
+    }
+
+    .helper-links a {
+        display: inline-flex;
+        align-items: center;
+        color: var(--primary-dark);
+        font-weight: 600;
+        text-decoration: none;
+        margin: 0 15px;
+        padding: 10px 15px;
+        border: 1px solid var(--primary-dark);
+        border-radius: 8px;
+        transition: background-color 0.3s;
+    }
+
+    .helper-links a:hover {
+        background-color: #d8f0ff; 
+    }
+    
+    .helper-links ion-icon {
+        margin-right: 8px;
+        font-size: 1.2rem;
+    }
+
+
+    /* Responsive Adjustments */
+    @media (max-width: 600px) {
+        .header-content {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px 15px;
+        }
+        .header-title-group {
+            margin-bottom: 10px;
+        }
+        #back-button {
+            width: 50%;
+            justify-content: center;
+        }
+        .container {
+            padding: 10px;
+        }
+        .resource-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+    }

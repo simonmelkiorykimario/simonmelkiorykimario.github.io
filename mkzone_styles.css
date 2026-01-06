@@ -115,7 +115,6 @@
         display: flex;
         flex-direction: column;
         background-color: var(--card-bg);
-        border: 1px solid var(--primary-dark);
         border-radius: var(--border-radius);
         padding: 25px;
         transition: all 0.3s ease;
@@ -123,6 +122,26 @@
         text-decoration: none;
         color: var(--text-color);
         height: auto; 
+    }
+
+    .google-business-group .resource-card {
+        border: 2px solid red;
+    }
+
+    .social-media-group .resource-card {
+        border: 2px solid red;
+    }
+
+    .website-group .resource-card {
+        border: 2px solid green;
+    }
+
+    .assets-production-group .resource-card {
+        border: 2px solid red;
+    }
+
+    .system-management-group .resource-card {
+        border: 2px solid red;
     }
 
     .resource-card:hover:not(.disabled) {
